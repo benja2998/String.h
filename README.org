@@ -1,0 +1,14 @@
+* ~String.h~
+~String.h~ is a free string library for C. It is licensed under the Zero-Clause BSD, meaning it can be used for any purpose.
+** Benefits of using ~String.h~
+- Modern language features
+  ~String.h~ brings modern language features to C, like safe concatenation and being able to get substrings.
+- Works with functions that expect Cstrings
+  The ~data~ member of the ~String~ struct is a Cstring. Just pass it to something like ~printf~ and it'll work.
+  Example:
+  #+BEGIN_SRC C
+    String str = String__FromCstr("hello");
+    printf("%s\n", str.data);
+  #+END_SRC
+** How to use
+Read the header file.
