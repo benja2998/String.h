@@ -1,5 +1,5 @@
 /*
-  https://codeberg.org/benja2998/String.h - free library for real strings in C
+  https://github.com/benja2998/String.h - free library for real strings in C
 
   License:
 
