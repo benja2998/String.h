@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
   String__Println(str);
 
   // you can cut them!
-  String__Cut(&str, 1, str.end);
+  String__Cut(&str, 0, str.end / 2);
   String__Println(str);
 
   // concatenation
