@@ -1,6 +1,6 @@
 /*
   https://github.com/benja2998/String.h - free library for real strings in C
-  Version 1.0.0
+  Version 1.0.1
 
   License:
 
@@ -21,6 +21,11 @@
 
 #ifndef REALSTRINGS
 #define REALSTRINGS
+
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct {
   char *data;
