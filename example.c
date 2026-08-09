@@ -48,6 +48,7 @@ int main(int argc, char **argv) {
   String str2 = String__FromCstr(" lol");
   String str3 = String__Cat(str, str2);
   String__Println(str3);
+  free(str3.data);
 
   // trimming
   String str4 = String__FromCstr("     hello    ");
@@ -64,6 +65,13 @@ int main(int argc, char **argv) {
   // to cstr
   char *cstr = String__Cstr(str4);
   printf("C-String of the trimmed string from above: %s\n", cstr);
+  free(cstr);
+
+  String s11 = String__FromCstr("hello world");
+
+  char *cstr2 = String__Cstr(s11);
+  printf("other c-string from string: %s\n", cstr2);
+  free(cstr2);
 
   return 0;
 }

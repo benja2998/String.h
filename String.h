@@ -1,6 +1,6 @@
 /*
   https://github.com/benja2998/String.h - free library for real strings in C
-  Version 1.1.0
+  Version 1.2.0
 
   License:
 
@@ -34,14 +34,24 @@ typedef struct {
   size_t end;
 } String;
 
+size_t String__len(String str) {
+  return str.end - str.start;
+}
+
 String String__Cat(String first, String second) {
   String dest = {0};
 
-  dest.data = malloc(first.end + second.end + 1);
-  strcpy(dest.data, first.data);
-  strcat(dest.data, second.data);
+  size_t first_length = String__len(first);
+  size_t second_length = String__len(second);
+  size_t length = first_length + second_length;
 
-  dest.start = first.start;
+  dest.data = malloc(length + 1);
+  memcpy(dest.data, first.data + first.start, first_length);
+  memcpy(dest.data + first_length, second.data + second.start, second_length);
+
+  dest.data[length] = '\0';
+
+  dest.start = 0;
   dest.end = strlen(dest.data);
 
   return dest;
@@ -54,18 +64,13 @@ void String__Println(String str) {
   putchar('\n');
 }
 
-size_t String__len(String str) {
-  return str.end - str.start;
-}
-
 char *String__Cstr(String str) {
-  // TODO: right now we trust the caller to not have provided a malformed String
+  size_t length = String__len(str);
+  char *cstr = malloc(length + 1);
+  memcpy(cstr, str.data + str.start, length);
+  cstr[length] = '\0';
 
-  char *s1 = strdup(str.data);
-  s1[str.end] = '\0';
-  char *s2 = s1 + str.start;
-
-  return s2;
+  return cstr;
 }
 
 void String__ErrorPrintln(String str) {
