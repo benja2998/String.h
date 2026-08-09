@@ -6,4 +6,4 @@
   ~String.h~ brings modern language features to C, like safe concatenation and being able to get substrings.
 
 ** How to use
-Read the header file and ~example.c~.
+Read the header file and ~example.c~. Once you know how to use ~String.h~, just copy the header file to your project.
