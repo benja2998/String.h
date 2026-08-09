@@ -49,5 +49,21 @@ int main(int argc, char **argv) {
   String str3 = String__Cat(str, str2);
   String__Println(str3);
 
+  // trimming
+  String str4 = String__FromCstr("     hello    ");
+
+  printf("|");
+  String__Print(str4);
+  puts("|");
+
+  String__Trim(&str4);
+  printf("|");
+  String__Print(str4);
+  puts("|");
+
+  // to cstr
+  char *cstr = String__Cstr(str4);
+  printf("C-String of the trimmed string from above: %s\n", cstr);
+
   return 0;
 }

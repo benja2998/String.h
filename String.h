@@ -1,6 +1,6 @@
 /*
   https://github.com/benja2998/String.h - free library for real strings in C
-  Version 1.0.1
+  Version 1.1.0
 
   License:
 
@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 
 typedef struct {
@@ -40,7 +41,7 @@ String String__Cat(String first, String second) {
   strcpy(dest.data, first.data);
   strcat(dest.data, second.data);
 
-  dest.start = 0;
+  dest.start = first.start;
   dest.end = strlen(dest.data);
 
   return dest;
@@ -51,6 +52,20 @@ void String__Println(String str) {
     putchar(str.data[i]);
   }
   putchar('\n');
+}
+
+size_t String__len(String str) {
+  return str.end - str.start;
+}
+
+char *String__Cstr(String str) {
+  // TODO: right now we trust the caller to not have provided a malformed String
+
+  char *s1 = strdup(str.data);
+  s1[str.end] = '\0';
+  char *s2 = s1 + str.start;
+
+  return s2;
 }
 
 void String__ErrorPrintln(String str) {
@@ -81,6 +96,29 @@ void String__Print(String str) {
   for (size_t i = str.start; i < str.end; i++) {
     putchar(str.data[i]);
   }
+}
+
+void String__TrimRight(String *str) {
+  for (size_t i = str->end; i > str->start; i--) {
+    if (!isspace(str->data[i]) && str->data[i] != '\0') {
+      str->end = i + 1;
+      break;
+    }
+  }
+}
+
+void String__TrimLeft(String *str) {
+  for (size_t i = str->start; i < str->end; i++) {
+    if (!isspace(str->data[i])) {
+      str->start = i;
+      break;
+    }
+  }
+}
+
+void String__Trim(String *str) {
+  String__TrimLeft(str);
+  String__TrimRight(str);
 }
 
 String String__FromCstr(char *cstr) {
