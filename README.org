@@ -2,8 +2,8 @@
 ~String.h~ is a free string library for C. It is licensed under the Zero-Clause BSD, meaning it can be used for any purpose.
 ** Benefits of using ~String.h~
 - Modern language features
+
   ~String.h~ brings modern language features to C, like safe concatenation and being able to get substrings.
-- Works with functions that expect Cstrings
-  ~String.h~ provides has ~char \*String__Cstr(String str)~, which can properly convert a (non-malformed) String to a C String.
+
 ** How to use
 Read the header file.
