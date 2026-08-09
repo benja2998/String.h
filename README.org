@@ -4,11 +4,6 @@
 - Modern language features
   ~String.h~ brings modern language features to C, like safe concatenation and being able to get substrings.
 - Works with functions that expect Cstrings
-  The ~data~ member of the ~String~ struct is a Cstring. Just pass it to something like ~printf~ and it'll work.
-  Example:
-  #+BEGIN_SRC C
-    String str = String__FromCstr("hello");
-    printf("%s\n", str.data);
-  #+END_SRC
+  ~String.h~ provides has ~char \*String__Cstr(String str)~, which can properly convert a (non-malformed) String to a C String.
 ** How to use
 Read the header file.
