@@ -34,9 +34,6 @@ int main(int argc, char **argv) {
   // really easy to make a String
   String str = String__FromCstr(argv[1]);
 
-  // example of working with functions that expect cstrs
-  printf("%s: %d\n", str.data, 69);
-
   // Printing
   String__Println(str);
 
@@ -71,6 +68,10 @@ int main(int argc, char **argv) {
 
   char *cstr2 = String__Cstr(s11);
   printf("other c-string from string: %s\n", cstr2);
+
+  // example of working with functions that expect cstrs
+  printf("%s: %d\n", cstr2, 69);
+
   free(cstr2);
 
   return 0;
