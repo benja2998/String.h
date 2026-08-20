@@ -1,6 +1,6 @@
 /*
   https://github.com/benja2998/String.h - free library for real strings in C
-  Version 1.2.0
+  Version 1.3.0
 
   License:
 
