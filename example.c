@@ -74,5 +74,7 @@ int main(int argc, char **argv) {
 
   free(cstr2);
 
+  String__Println(S("Hello world!!"));
+
   return 0;
 }

@@ -28,6 +28,8 @@
 #include <ctype.h>
 #include <string.h>
 
+#define S(s) String__FromCstr(s)
+
 typedef struct {
   char *data;
   size_t start;
